@@ -1,0 +1,31 @@
+<configuration>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>mapreduce.map.resource.memory-mb</name>
+        <value>512</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.resource.memory-mb</name>
+        <value>512</value>
+    </property>
+    <property>
+        <name>yarn.app.mapreduce.am.resource.memory-mb</name>
+        <value>1024</value>
+    </property>
+    <!-- Legacy properties for compatibility -->
+    <property>
+        <name>yarn.app.mapreduce.am.env</name>
+        <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+    <property>
+        <name>mapreduce.map.env</name>
+        <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.env</name>
+        <value>HADOOP_MAPRED_HOME=$HADOOP_HOME</value>
+    </property>
+</configuration>

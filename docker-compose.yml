@@ -6,20 +6,19 @@ services:
       dockerfile: Dockerfile
     image: da-spark-image:latest
     entrypoint: ['./entrypoint.sh', 'master']
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
-      interval: 5s
-      timeout: 3s
-      retries: 3
-      start_period: 30s
     volumes:
       - spark-logs:/opt/spark/spark-events
+      - hadoop-name:/hadoop/dfs/name  
+      - hadoop-name:/hadoop/dfs/data  
     env_file:
       - .env.spark
     ports:
       - "9090:8080"
-      - "7077:7077"
-
+      - "7077:7077"  # Keep for compatibility, but use YARN
+      - '9870:9870'
+      - '9000:9000'  # HDFS IPC
+      - "8088:8088"
+      - "8042:8042"  # NodeManager
   spark-history-server:
     container_name: da-spark-history
     build:
@@ -28,15 +27,13 @@ services:
     image: da-spark-image:latest
     entrypoint: ['./entrypoint.sh', 'history']
     depends_on:
-      spark-master:
-        condition: service_healthy
+      - spark-master
     env_file:
       - .env.spark
     volumes:
       - spark-logs:/opt/spark/spark-events
     ports:
       - "18080:18080"
-
   spark-worker:
     container_name: da-spark-worker
     build:
@@ -45,15 +42,15 @@ services:
     image: da-spark-image:latest
     entrypoint: ['./entrypoint.sh', 'worker']
     depends_on:
-      spark-master:
-        condition: service_healthy
+      - spark-master
     env_file:
       - .env.spark
     volumes:
       - spark-logs:/opt/spark/spark-events
+      - hadoop-name:/hadoop/dfs/data  # Shared
     ports:
-      - "8090:8090"
       - "8081:8081"
 
 volumes:
   spark-logs:
+  hadoop-name:  # New
