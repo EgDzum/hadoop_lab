@@ -1,7 +1,5 @@
-ipython
 pandas
 pyarrow
 numpy
 pyspark
 matplotlib
-jupyter
