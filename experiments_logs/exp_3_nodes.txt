@@ -1,0 +1,86 @@
+docker exec da-spark-master spark-submit --master spark://spark-master:7077 --deploy-mode client ./apps/spark_etl.py
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/04/09 20:13:01 INFO SparkContext: Running Spark version 4.1.1
+26/04/09 20:13:01 INFO SparkContext: OS info Linux, 6.6.87.2-microsoft-standard-WSL2, amd64
+26/04/09 20:13:01 INFO SparkContext: Java version 17.0.18+8-Debian-1deb11u1
+26/04/09 20:13:01 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/04/09 20:13:02 INFO ResourceUtils: ==============================================================
+26/04/09 20:13:02 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/04/09 20:13:02 INFO ResourceUtils: ==============================================================
+26/04/09 20:13:02 INFO SparkContext: Submitted application: PySpark Bank Analysis
+26/04/09 20:13:02 INFO SecurityManager: Changing view acls to: root
+26/04/09 20:13:02 INFO SecurityManager: Changing modify acls to: root
+26/04/09 20:13:02 INFO SecurityManager: Changing view acls groups to: root
+26/04/09 20:13:02 INFO SecurityManager: Changing modify acls groups to: root
+26/04/09 20:13:02 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY; RPC SSL disabled
+26/04/09 20:13:03 INFO Utils: Successfully started service 'sparkDriver' on port 34495.
+26/04/09 20:13:04 INFO SparkEnv: Registering MapOutputTracker
+26/04/09 20:13:04 INFO SparkEnv: Registering BlockManagerMaster
+26/04/09 20:13:04 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/04/09 20:13:04 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/04/09 20:13:04 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/04/09 20:13:05 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-91805eaa-36d6-4c6c-86f0-3ea28ed2695c
+26/04/09 20:13:06 INFO SparkEnv: Registering OutputCommitCoordinator
+26/04/09 20:13:06 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/04/09 20:13:06 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/04/09 20:13:07 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/04/09 20:13:07 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/04/09 20:13:07 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/04/09 20:13:07 INFO SecurityManager: Changing view acls to: root
+26/04/09 20:13:07 INFO SecurityManager: Changing modify acls to: root
+26/04/09 20:13:07 INFO SecurityManager: Changing view acls groups to: root
+26/04/09 20:13:07 INFO SecurityManager: Changing modify acls groups to: root
+26/04/09 20:13:07 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY; RPC SSL disabled
+26/04/09 20:13:08 INFO Executor: Starting executor ID driver on host 76b35c7b81d6
+26/04/09 20:13:08 INFO Executor: OS info Linux, 6.6.87.2-microsoft-standard-WSL2, amd64
+26/04/09 20:13:08 INFO Executor: Java version 17.0.18+8-Debian-1deb11u1
+26/04/09 20:13:08 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/04/09 20:13:08 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@685af2a0 for default.
+26/04/09 20:13:08 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 38993.
+26/04/09 20:13:08 INFO NettyBlockTransferService: Server created on 76b35c7b81d6:38993
+26/04/09 20:13:08 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/04/09 20:13:08 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 76b35c7b81d6, 38993, None)
+26/04/09 20:13:08 INFO BlockManagerMasterEndpoint: Registering block manager 76b35c7b81d6:38993 with 289.6 MiB RAM, BlockManagerId(driver, 76b35c7b81d6, 38993, None)
+26/04/09 20:13:08 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 76b35c7b81d6, 38993, None)
+26/04/09 20:13:08 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 76b35c7b81d6, 38993, None)
+26/04/09 20:13:10 INFO RollingEventLogFilesWriter: Logging events to file:/opt/spark/spark-events/eventlog_v2_local-1775765587602/events_1_local-1775765587602.zstd
+Spark Version: 4.1.1
+Spark Master: local[4]
+Available cores: 4
+Spark UI: http://localhost:9090 (мониторинг jobs/stages)
+Partitions after read: 4
+[2026-04-09 20:13:47] Filtration df - Duration: 1.36s
+Rows after filter: 1047732
+Rows after aggregation: 9352
+[2026-04-09 20:14:22] Location agg done - Duration: 12.41s
+[2026-04-09 20:14:23] Daily max trans done - Duration: 0.47s
+Total positive transactions: 92
+Partitions after read: 4
+[2026-04-09 20:14:54] Filtration df - Duration: 0.10s
+Rows after filter: 1047732
+Rows after aggregation: 9352
+[2026-04-09 20:15:05] Location agg done - Duration: 5.78s
+[2026-04-09 20:15:05] Daily max trans done - Duration: 0.26s
+Total positive transactions: 92
+Partitions after read: 4
+[2026-04-09 20:15:24] Filtration df - Duration: 0.14s
+Rows after filter: 1047732
+Rows after aggregation: 9352
+[2026-04-09 20:15:39] Location agg done - Duration: 8.14s
+[2026-04-09 20:15:40] Daily max trans done - Duration: 0.50s
+Total positive transactions: 92
+Partitions after read: 4
+[2026-04-09 20:15:58] Filtration df - Duration: 0.10s
+Rows after filter: 1047732
+Rows after aggregation: 9352
+[2026-04-09 20:16:10] Location agg done - Duration: 5.81s
+[2026-04-09 20:16:10] Daily max trans done - Duration: 0.22s
+Total positive transactions: 92
+Partitions after read: 4
+[2026-04-09 20:16:27] Filtration df - Duration: 0.08s
+Rows after filter: 1047732
+Rows after aggregation: 9352
+[2026-04-09 20:16:37] Location agg done - Duration: 5.97s
+[2026-04-09 20:16:37] Daily max trans done - Duration: 0.24s
+Total positive transactions: 92
