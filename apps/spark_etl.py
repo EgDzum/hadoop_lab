@@ -66,13 +66,16 @@ def pipeline(spark, number):
 
 if __name__ == '__main__':
     # Создание Spark сессии
-    spark = SparkSession.builder \
-        .appName("PySpark Bank Analysis") \
-        .config("spark.executor.memory", "1g") \
-        .config("spark.executor.cores", "2") \
-        .config("spark.sql.adaptive.enabled", "true") \
-        .config("spark.sql.adaptive.coalescePartitions.enabled", "true") \
+    spark = (
+        SparkSession.builder
+        .appName("PySpark Bank Analysis")
+        .master("local[4]")
+        .config("spark.executor.memory", "1g")
+        .config("spark.executor.cores", "2")
+        .config("spark.sql.adaptive.enabled", "true")
+        .config("spark.sql.adaptive.coalescePartitions.enabled", "true")
         .getOrCreate()
+        )
 
     # Подавление WARN и FATAL логов
     spark.sparkContext.setLogLevel("ERROR")
